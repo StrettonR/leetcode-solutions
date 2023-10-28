@@ -1,6 +1,9 @@
 public class Solution {
     public bool IsAnagram(string s, string t) {
-        return new string(s.OrderBy(c => c).ToArray()) == new string(t.OrderBy(c => c).ToArray());
+        if (s.Length != t.Length) {
+            return false;
+        }
+        return String.Concat(s.OrderBy(x => x)) == String.Concat(t.OrderBy(x => x));
 
     }
 }
