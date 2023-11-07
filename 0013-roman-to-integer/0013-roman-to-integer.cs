@@ -1,56 +1,20 @@
 public class Solution {
     public int RomanToInt(string s) {
         var result = 0;
-        var previousValue = '#';
-        for (var i = 0; i < s.Length; i++) {
+        var num = 0;
+        var previousValue = 0;
+        for (var i = (s.Length -1); i >= 0; i--) {
             switch (s[i]) {
-            case 'I':
-                result += 1;
-                break;
-            case 'V':
-                if (previousValue == 'I') {
-                    result += 3;
-                } else {
-                    result += 5;
-                }
-                break;
-            case 'X':
-                if (previousValue == 'I') {
-                    result += 8;
-                } else {
-                    result += 10;
-                }
-                break;
-            case 'L':
-                if (previousValue == 'X') {
-                    result += 30;
-                } else {
-                    result += 50;
-                }
-                break;
-            case 'C':
-                if (previousValue == 'X') {
-                    result += 80;
-                } else {
-                    result += 100;
-                }
-                break;
-            case 'D':
-                if (previousValue == 'C') {
-                    result += 300;
-                } else {
-                    result += 500;
-                }
-                break;
-            case 'M':
-                if (previousValue == 'C') {
-                    result += 800;
-                } else {
-                    result += 1000;
-                }
-                break;
+                case 'I': num = 1; break;
+                case 'V': num = 5; break;
+                case 'X': num = 10; break;
+                case 'L': num = 50; break;
+                case 'C': num = 100; break;
+                case 'D': num = 500; break;
+                case 'M': num = 1000; break;
             }
-            previousValue = s[i];
+            result = num < previousValue ? result -= num : result += num;
+            previousValue = num;
         }
         return result;
     }
