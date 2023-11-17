@@ -1,18 +1,17 @@
 public class Solution {
     public int ArraySign(int[] nums) {
-        var output = 1;
-        if (nums.Contains(0)) {
+        if (nums == null || nums.Length == 0 || nums[0] == 0) {
             return 0;
         }
-        foreach (var i in nums) {
-            output *= signFunc(i);
+        var output = 1;
+        foreach (var num in nums) {
+            if (num == 0) {
+                return 0;
+            }
+            if (num < 0) {
+                output *= -1;
+            }
         }
         return output;
-    }
-
-    public int signFunc(int x) {
-        if (x == 0) return 0;
-        if (x < 0) return -1;
-        return 1;
     }
 }
